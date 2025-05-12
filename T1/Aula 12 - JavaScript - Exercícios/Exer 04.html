@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Somar até 0 e Mostrar Números</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    #numeros, #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 2px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Somar Números até Digitar 0</h1>
+
+  <input type="number" id="numero" placeholder="Digite um número" />
+  <button onclick="adicionarNumero()">Adicionar</button>
+
+  <div id="numeros">
+    <h3>Números digitados:</h3>
+    <ul id="listaNumeros"></ul>
+  </div>
+
+  <div id="resultado"></div>
+
+  <script>
+    let soma = 0;
+    const lista = document.getElementById("listaNumeros");
+    const resultado = document.getElementById("resultado");
+
+    function adicionarNumero() {
+      const input = document.getElementById("numero");
+      const numero = parseFloat(input.value);
+
+      if (isNaN(numero)) {
+        alert("Digite um número válido.");
+        return;
+      }
+
+      input.value = ""; 
+      input.focus(); 
+
+      if (numero === 0) {
+        resultado.textContent = `Soma total: ${soma}`;
+        return;
+      }
+
+      soma += numero;
+
+      const item = document.createElement("li");
+      item.textContent = numero;
+      lista.appendChild(item);
+    }
+  </script>
+
+</body>
+</html>

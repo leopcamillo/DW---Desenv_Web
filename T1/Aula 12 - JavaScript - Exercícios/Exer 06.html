@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Maior Número da Lista</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+    li {
+      margin: 2px 0;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Encontrar o Maior Número</h1>
+
+  <input type="number" id="numero" placeholder="Digite um número" />
+  <button onclick="adicionarNumero()">Adicionar</button>
+  <button onclick="mostrarMaior()">Mostrar Maior</button>
+
+  <ul id="listaNumeros"></ul>
+  <div id="resultado"></div>
+
+  <script>
+    const numeros = [];
+    const lista = document.getElementById("listaNumeros");
+    const resultado = document.getElementById("resultado");
+
+    function adicionarNumero() {
+      const input = document.getElementById("numero");
+      const valor = parseFloat(input.value);
+
+      if (isNaN(valor)) {
+        alert("Digite um número válido.");
+        return;
+      }
+
+      numeros.push(valor);
+
+      const item = document.createElement("li");
+      item.textContent = valor;
+      lista.appendChild(item);
+
+      input.value = "";
+      input.focus();
+      resultado.textContent = ""; 
+    }
+
+    function mostrarMaior() {
+      if (numeros.length === 0) {
+        resultado.textContent = "Nenhum número foi adicionado ainda.";
+        return;
+      }
+
+      const maior = Math.max(...numeros);
+      resultado.textContent = `O maior número é: ${maior}`;
+    }
+  </script>
+
+</body>
+</html>

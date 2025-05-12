@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contar até N em Lista</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    li {
+      margin: 2px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Contar de 1 até N</h1>
+  <input type="number" id="numero" placeholder="Digite um número" />
+  <br>
+  <button onclick="contar()">Contar</button>
+
+  <ul id="resultado"></ul>
+
+  <script>
+    function contar() {
+      const n = parseInt(document.getElementById("numero").value);
+      const resultado = document.getElementById("resultado");
+      resultado.innerHTML = ""; 
+
+      if (isNaN(n) || n < 1) {
+        resultado.innerHTML = "<li>Por favor, digite um número válido maior que 0.</li>";
+        return;
+      }
+
+      for (let i = 1; i <= n; i++) {
+        const item = document.createElement("li");
+        item.textContent = i;
+        resultado.appendChild(item);
+      }
+    }
+  </script>
+
+</body>
+</html>
